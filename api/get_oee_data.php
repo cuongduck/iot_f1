@@ -31,8 +31,8 @@ try {
                     CONCAT('Tuần ', FLOOR(DATEDIFF(Time, 
                     DATE_FORMAT(Time, '%Y-%m-01')) / 7) + 1)
             END as period,
-            L5_Tong_Goi, L6_Tong_Goi, L7_Tong_Goi, L8_Tong_Goi,
-            L5_SL_KH, L6_SL_KH, L7_SL_KH, L8_SL_KH
+            CSD_SL_thuc_te	,
+            	CSD_SL_KH
         FROM OEE 
         $dateRangeQuery
         ORDER BY Time DESC
@@ -42,44 +42,13 @@ SELECT
     period as label,
     ROUND(
         CASE 
-            WHEN SUM(COALESCE(L5_SL_KH, 0) + COALESCE(L6_SL_KH, 0) + 
-                    COALESCE(L7_SL_KH, 0) + COALESCE(L8_SL_KH, 0)) > 0 
+            WHEN SUM(COALESCE(CSD_SL_KH, 0)) > 0 
             THEN (
-                SUM(COALESCE(L5_Tong_Goi, 0) + COALESCE(L6_Tong_Goi, 0) + 
-                    COALESCE(L7_Tong_Goi, 0) + COALESCE(L8_Tong_Goi, 0)) * 100.0
-            ) / SUM(COALESCE(L5_SL_KH, 0) + COALESCE(L6_SL_KH, 0) + 
-                   COALESCE(L7_SL_KH, 0) + COALESCE(L8_SL_KH, 0))
+                SUM(COALESCE(CSD_SL_thuc_te, 0)) * 100.0
+            ) / SUM(COALESCE(CSD_SL_KH, 0))
             ELSE 0
         END,
-    2) as value,
-    ROUND(
-        CASE 
-            WHEN SUM(COALESCE(L5_SL_KH, 0)) > 0 
-            THEN (SUM(COALESCE(L5_Tong_Goi, 0)) * 100.0) / SUM(COALESCE(L5_SL_KH, 0))
-            ELSE 0
-        END,
-    2) as line5_oee,
-    ROUND(
-        CASE 
-            WHEN SUM(COALESCE(L6_SL_KH, 0)) > 0 
-            THEN (SUM(COALESCE(L6_Tong_Goi, 0)) * 100.0) / SUM(COALESCE(L6_SL_KH, 0))
-            ELSE 0
-        END,
-    2) as line6_oee,
-    ROUND(
-        CASE 
-            WHEN SUM(COALESCE(L7_SL_KH, 0)) > 0 
-            THEN (SUM(COALESCE(L7_Tong_Goi, 0)) * 100.0) / SUM(COALESCE(L7_SL_KH, 0))
-            ELSE 0
-        END,
-    2) as line7_oee,
-    ROUND(
-        CASE 
-            WHEN SUM(COALESCE(L8_SL_KH, 0)) > 0 
-            THEN (SUM(COALESCE(L8_Tong_Goi, 0)) * 100.0) / SUM(COALESCE(L8_SL_KH, 0))
-            ELSE 0
-        END,
-    2) as line8_oee
+    2) as value
     FROM time_periods
     WHERE period IS NOT NULL
     GROUP BY period
@@ -113,19 +82,12 @@ SELECT
  while ($row = $result->fetch_assoc()) {
     $dates[] = $row['label'];
     $values[] = floatval($row['value']);
-    $line5OEE[] = floatval($row['line5_oee']);
-    $line6OEE[] = floatval($row['line6_oee']);
-    $line7OEE[] = floatval($row['line7_oee']);
-    $line8OEE[] = floatval($row['line8_oee']);
+
 }
 
 echo json_encode([
     'dates' => $dates,
     'values' => $values,
-    'line5OEE' => $line5OEE,
-    'line6OEE' => $line6OEE,
-    'line7OEE' => $line7OEE,
-    'line8OEE' => $line8OEE,
     'period' => $period
 ]);
 

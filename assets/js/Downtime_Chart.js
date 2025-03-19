@@ -1,5 +1,5 @@
 let downtimeChart = null;
-let currentView = 'totalF3';
+let currentView = 'totalCSD';
 let cachedData = null;  // Thêm biến để cache data
 
 async function updateDowntimeChart(period) {
@@ -8,8 +8,8 @@ async function updateDowntimeChart(period) {
         const response = await fetch(`api/get_downtime_chart.php?period=${period}`);
         cachedData = await response.json();
         
-        if (currentView === 'totalF3') {
-            renderTotalF3Chart(cachedData.totalF3, cachedData.lineData);
+        if (currentView === 'totalCSD') {
+            renderTotalCSDChart(cachedData.totalCSD, cachedData.lineData);
         } else {
             renderLineChart(cachedData.lineData);
         }
@@ -19,7 +19,7 @@ async function updateDowntimeChart(period) {
 }
 
 
-function renderTotalF3Chart(rawData, lineData) {
+function renderTotalCSDChart(rawData, lineData) {
     // Tính tổng thời gian dừng
     const totalDowntime = rawData.reduce((sum, item) => sum + item.value, 0);
     
@@ -278,8 +278,8 @@ function getLineInfoText(lineData) {
 function switchChart(view) {
     currentView = view;
     if (cachedData) {
-        if (view === 'totalF3') {
-            renderTotalF3Chart(cachedData.totalF3, cachedData.lineData);
+        if (view === 'totalCSD') {
+            renderTotalCSDChart(cachedData.totalCSD, cachedData.lineData);
         } else {
             renderLineChart(cachedData.lineData);
         }

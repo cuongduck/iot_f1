@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     Đăng nhập hệ thống
                 </h2>
                 <p class="mt-2 text-center text-sm text-gray-600">
-                     IoT Xưởng Mì MMB
+                     IoT Xưởng F1 MMB
                 </p>
             </div>
             

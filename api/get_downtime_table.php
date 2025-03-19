@@ -15,7 +15,7 @@ try {
     $dateRangeQuery = str_replace('WHERE', 'AND', $dateRangeQuery);
     
     // Thêm điều kiện lọc Line
-    $lineFilter = $line !== 'all' ? "AND Line = ?" : "AND Line IN ('L5', 'L6', 'L7', 'L8')";
+    $lineFilter = $line !== 'all' ? "AND Line = ?" : "AND Line IN ('CSD')";
     
     $sql = "SELECT ID, Date, Line, Ten_Loi, Thoi_Gian_Dung, Ghi_Chu, Created_At, Updated_At 
             FROM Downtime 

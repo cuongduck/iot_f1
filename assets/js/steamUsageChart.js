@@ -16,34 +16,18 @@ async function updateSteamUsageChart(period) {
                 labels: data.dates,
                 datasets: [
                     {
-                        label: 'Hấp Line 5',
-                        data: data.line5Hap,
+                        label: 'Hơi CSD',
+                        data: data.CSDhoi,
                         backgroundColor: 'rgba(54, 162, 235, 0.8)',  // Xanh dương
                         borderColor: 'rgb(54, 162, 235)',
                         borderWidth: 1,
                         stack: 'Stack 0'
                     },
                     {
-                        label: 'Chiên Line 5',
-                        data: data.line5Chien,
-                        backgroundColor: 'rgba(75, 192, 192, 0.8)',  // Xanh lá nhạt
-                        borderColor: 'rgb(75, 192, 192)',
-                        borderWidth: 1,
-                        stack: 'Stack 0'
-                    },
-                    {
-                        label: 'Hấp Line 6',
-                        data: data.line6Hap,
+                        label: 'Hơi FS',
+                        data: data.FShoi,
                         backgroundColor: 'rgba(255, 99, 132, 0.8)',  // Hồng
                         borderColor: 'rgb(255, 99, 132)',
-                        borderWidth: 1,
-                        stack: 'Stack 0'
-                    },
-                    {
-                        label: 'Chiên Line 6',
-                        data: data.line6Chien,
-                        backgroundColor: 'rgba(255, 159, 64, 0.8)',  // Cam
-                        borderColor: 'rgb(255, 159, 64)',
                         borderWidth: 1,
                         stack: 'Stack 0'
                     }
@@ -122,12 +106,12 @@ async function updateSteamUsageChart(period) {
                                 let label = context.dataset.label || '';
                                 let value = context.parsed.y || 0;
                                 
-                                if (context.datasetIndex <= 3) { // 4 dataset đầu tiên là các thành phần hơi
+                                if (context.datasetIndex <= 1) { // 4 dataset đầu tiên là các thành phần hơi
                                     let total = 0;
-                                    for (let i = 0; i <= 3; i++) {
+                                    for (let i = 0; i <= 1; i++) {
                                         total += context.chart.data.datasets[i].data[context.dataIndex] || 0;
                                     }
-                                    if (context.datasetIndex === 3) { // Dataset cuối cùng của stack
+                                    if (context.datasetIndex === 1) { // Dataset cuối cùng của stack
                                         return [
                                             `${label}: ${value.toLocaleString('en-US', { maximumFractionDigits: 2 })} kg`,
                                             `Tổng: ${total.toLocaleString('en-US', { maximumFractionDigits: 2 })} kg`

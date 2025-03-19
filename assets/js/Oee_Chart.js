@@ -177,26 +177,6 @@ tableHTML = `
                 <span style="float: right; font-weight: 600; color: ${value >= 89 ? '#36A2EB' : '#FF4444'}">${value.toFixed(1)}%</span>
             </div>
             <div style="margin: 2px 0; font-size: 12px;">
-                <span style="display: inline-block; width: 8px; height: 8px; background: #4CAF50; border-radius: 50%; margin-right: 8px;"></span>
-                <span style="color: #666;">Line 5:</span>
-                <span style="float: right; font-weight: 600; color: ${data.line5OEE[dataIndex] >= 89 ? '#36A2EB' : '#FF4444'}">${data.line5OEE[dataIndex].toFixed(1)}%</span>
-            </div>
-            <div style="margin: 2px 0; font-size: 12px;">
-                <span style="display: inline-block; width: 8px; height: 8px; background: #FF9800; border-radius: 50%; margin-right: 8px;"></span>
-                <span style="color: #666;">Line 6:</span>
-                <span style="float: right; font-weight: 600; color: ${data.line6OEE[dataIndex] >= 89 ? '#36A2EB' : '#FF4444'}">${data.line6OEE[dataIndex].toFixed(1)}%</span>
-            </div>
-            <div style="margin: 2px 0; font-size: 12px;">
-                <span style="display: inline-block; width: 8px; height: 8px; background: #4CAF50; border-radius: 50%; margin-right: 8px;"></span>
-                <span style="color: #666;">Line 7:</span>
-                <span style="float: right; font-weight: 600; color: ${data.line7OEE[dataIndex] >= 89 ? '#36A2EB' : '#FF4444'}">${data.line7OEE[dataIndex].toFixed(1)}%</span>
-            </div>
-            <div style="margin: 2px 0; font-size: 12px;">
-                <span style="display: inline-block; width: 8px; height: 8px; background: #FF9800; border-radius: 50%; margin-right: 8px;"></span>
-                <span style="color: #666;">Line 8:</span>
-                <span style="float: right; font-weight: 600; color: ${data.line8OEE[dataIndex] >= 89 ? '#36A2EB' : '#FF4444'}">${data.line8OEE[dataIndex].toFixed(1)}%</span>
-            </div>           
-            <div style="margin: 2px 0; font-size: 12px;">
                 <span style="display: inline-block; width: 8px; height: 8px; background: #2196F3; border-radius: 50%; margin-right: 8px;"></span>
                 <span style="color: #666;">Target:</span>
                 <span style="float: right; font-weight: 600; color: #2196F3">89.0%</span>

@@ -16,7 +16,7 @@ try {
         GROUP_CONCAT(Ghi_Chu SEPARATOR '; ') as Details
     FROM Downtime 
     $dateRangeQuery
-    AND Line IN ('L5', 'L6', 'L7', 'L8')
+    AND Line IN ('CSD')
     GROUP BY Ten_Loi
     ORDER BY Duration DESC";
 
@@ -28,7 +28,7 @@ try {
             SUM(Thoi_Gian_Dung) as TotalDuration
         FROM Downtime 
         $dateRangeQuery
-        AND Line IN ('L5', 'L6', 'L7', 'L8')
+        AND Line IN ('CSD')
         GROUP BY Line
         ORDER BY Line";
     } else {
@@ -38,7 +38,7 @@ try {
             SUM(Thoi_Gian_Dung) as TotalDuration
         FROM Downtime 
         $dateRangeQuery
-        WHERE Line IN ('L5', 'L6', 'L7', 'L8')
+        WHERE Line IN ('CSD')
         GROUP BY Line
         ORDER BY Line";
     }
@@ -51,7 +51,7 @@ try {
     }
 
     $data = [
-        'totalF3' => [],
+        'totalCSD' => [],
         'lineData' => []
     ];
 
@@ -59,7 +59,7 @@ try {
     $totalDuration = 0; // Khởi tạo tổng thời gian dừng
     while ($row = $mainResult->fetch_assoc()) {
         $totalDuration += floatval($row['Duration']);
-        $data['totalF3'][] = [
+        $data['totalCSD'][] = [
             'name' => $row['ErrorName'],
             'value' => floatval($row['Duration']),
             'details' => $row['Details']
@@ -67,8 +67,8 @@ try {
     }
 
     // Nếu không có dữ liệu, đặt totalF3 thành 0
-    if (empty($data['totalF3'])) {
-        $data['totalF3'][] = [
+    if (empty($data['totalCSD'])) {
+        $data['totalCSD'][] = [
             'name' => '',
             'value' => 0,
             'details' => ''

@@ -16,7 +16,7 @@ async function updateSteamChart(period) {
                 labels: data.dates,
                 datasets: [
                     {
-                        label: 'Hơi F3',
+                        label: 'Hơi F1',
                         data: data.steamPerProduct,
                         borderColor: '#9c27b0',
                         backgroundColor: 'rgba(156, 39, 176, 0.1)',
@@ -28,8 +28,8 @@ async function updateSteamChart(period) {
                         order: 1
                     },
                     {
-                        label: 'Hơi Line 5',
-                        data: data.line5SteamPerProduct,
+                        label: 'Hơi CSD',
+                        data: data.CSDSteamPerProduct,
                         borderColor: 'rgb(54, 162, 235)',
                         backgroundColor: 'rgba(54, 162, 235, 0.1)',
                         borderWidth: 2,
@@ -39,8 +39,8 @@ async function updateSteamChart(period) {
                         order: 2
                     },
                     {
-                        label: 'Hơi Line 6',
-                        data: data.line6SteamPerProduct,
+                        label: 'Hơi FS',
+                        data: data.FSSteamPerProduct,
                         borderColor: 'rgb(255, 99, 132)',
                         backgroundColor: 'rgba(255, 99, 132, 0.1)',
                         borderWidth: 2,

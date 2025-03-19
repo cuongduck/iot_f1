@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Xưởng F1 MMB</title>
+    <title>Dashboard Xưởng Mì MMB</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="assets/css/status-card.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="assets/css/kansui.css?v=<?php echo time(); ?>">
     <!-- Add Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Add Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.1.0/chartjs-plugin-annotation.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
 
     <!-- Các script khác -->
 </head>
@@ -26,8 +25,8 @@
         <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center gap-3">
                 <div class="factory-nav">
-                    <a href="index.php?factory=CSD" class="factory-btn <?php echo (!isset($_GET['factory']) || $_GET['factory'] == 'CSD') ? 'active' : ''; ?>">CSD</a>
-                    <a href="index.php?factory=FS" class="factory-btn <?php echo isset($_GET['factory']) && $_GET['factory'] == 'FS' ? 'active' : ''; ?>">FS</a>
+                    <a href="index.php?factory=F3" class="factory-btn <?php echo (!isset($_GET['factory']) || $_GET['factory'] == 'F3') ? 'active' : ''; ?>">CSD</a>
+                    <a href="index.php?factory=F2" class="factory-btn <?php echo isset($_GET['factory']) && $_GET['factory'] == 'F2' ? 'active' : ''; ?>">FS</a>
                     <?php if (isAdmin()): ?>
                     <a href="index.php?page=production_plan" class="factory-btn <?php echo isset($_GET['page']) && $_GET['page'] == 'production_plan' ? 'active' : ''; ?>">KHSX</a>
                     <?php endif; ?>

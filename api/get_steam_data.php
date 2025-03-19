@@ -30,8 +30,7 @@ try {
                 WHEN '$period' = 'month' THEN
                     CONCAT('Tuần ', FLOOR(DATEDIFF(Time, DATE_FORMAT(Time, '%Y-%m-01')) / 7) + 1)
             END as period,
-            L5_Hap, L5_Chien, L6_Hap, L6_Chien,
-            L5_Tong_Goi, L6_Tong_Goi
+            CSD_hoi, FS_hoi, FS_SL_thuc_te, CSD_SL_thuc_te
         FROM OEE 
         $dateRangeQuery
         ORDER BY Time DESC
@@ -39,37 +38,32 @@ try {
     )
     SELECT 
         period as label,
-        ROUND(AVG(COALESCE(L5_Hap, 0)), 2) as line5_hap,
-        ROUND(AVG(COALESCE(L5_Chien, 0)), 2) as line5_chien,
-        ROUND(AVG(COALESCE(L6_Hap, 0)), 2) as line6_hap,
-        ROUND(AVG(COALESCE(L6_Chien, 0)), 2) as line6_chien,
-        ROUND(AVG(COALESCE(L5_Tong_Goi, 0)), 2) as line5_products,
-        ROUND(AVG(COALESCE(L6_Tong_Goi, 0)), 2) as line6_products,
-        ROUND(
+        ROUND(AVG(COALESCE(CSD_hoi, 0)), 2) as CSD_hoi,
+        ROUND(AVG(COALESCE(FS_hoi, 0)), 2) as FS_hoi,
+        ROUND(AVG(COALESCE(CSD_SL_thuc_te, 0)), 2) as CSD_products,
+        ROUND(AVG(COALESCE(FS_SL_thuc_te, 0)), 2) as FS_products,
             CASE 
-                WHEN SUM(COALESCE(L5_Tong_Goi, 0) + COALESCE(L6_Tong_Goi, 0)) > 0 THEN
-                    (SUM(COALESCE(L5_Hap, 0) + COALESCE(L5_Chien, 0) + 
-                     COALESCE(L6_Hap, 0) + COALESCE(L6_Chien, 0)) * 1000.0) / 
-                    SUM(COALESCE(L5_Tong_Goi, 0) + COALESCE(L6_Tong_Goi, 0))
+                WHEN SUM(COALESCE(CSD_SL_thuc_te, 0) + COALESCE(FS_SL_thuc_te, 0)) > 0 THEN
+                    (SUM(COALESCE(CSD_hoi, 0)  + 
+                     COALESCE(FS_hoi, 0)) * 1000.0) / 
+                    SUM(COALESCE(CSD_SL_thuc_te, 0) + COALESCE(FS_SL_thuc_te, 0))
                 ELSE 0
-            END, 
-        2) as steam_per_product,
+            END as steam_per_product,
         ROUND(
             CASE 
-                WHEN SUM(COALESCE(L5_Tong_Goi, 0)) > 0 THEN
-                    (SUM(COALESCE(L5_Hap, 0) + COALESCE(L5_Chien, 0)) * 1000.0) / 
-                    SUM(COALESCE(L5_Tong_Goi, 0))
+                WHEN SUM(COALESCE(CSD_SL_thuc_te, 0)) > 0 THEN
+                    (SUM(COALESCE(CSD_hoi, 0)) * 1000.0) / (SUM(COALESCE(CSD_SL_thuc_te, 0)) * 0.33)
                 ELSE 0
             END,
-        2) as line5_steam_per_product,
+        2) as CSD_steam_per_product,
         ROUND(
             CASE 
-                WHEN SUM(COALESCE(L6_Tong_Goi, 0)) > 0 THEN
-                    (SUM(COALESCE(L6_Hap, 0) + COALESCE(L6_Chien, 0)) * 1000.0) / 
-                    SUM(COALESCE(L6_Tong_Goi, 0))
+                WHEN SUM(COALESCE(FS_SL_thuc_te, 0)) > 0 THEN
+                    SUM(COALESCE(FS_hoi, 0) * 1000.0) / 
+                    SUM(COALESCE(FS_SL_thuc_te, 0))
                 ELSE 0
             END,
-        2) as line6_steam_per_product
+        2) as FS_steam_per_product
     FROM time_periods
     WHERE period IS NOT NULL
     GROUP BY period
@@ -94,34 +88,28 @@ try {
     }
 
     $dates = [];
-    $line5Hap = [];
-    $line5Chien = [];
-    $line6Hap = [];
-    $line6Chien = [];
+    $CSDhoi = [];
+    $FShoi = [];
     $steamPerProduct = [];
-    $line5SteamPerProduct = [];
-    $line6SteamPerProduct = [];
+    $CSDSteamPerProduct = [];
+    $FSSteamPerProduct = [];
 
     while ($row = $result->fetch_assoc()) {
         $dates[] = $row['label'];
-        $line5Hap[] = floatval($row['line5_hap']);
-        $line5Chien[] = floatval($row['line5_chien']);
-        $line6Hap[] = floatval($row['line6_hap']);
-        $line6Chien[] = floatval($row['line6_chien']);
+        $CSDhoi[] = floatval($row['CSD_hoi']);
+        $FShoi[] = floatval($row['FS_hoi']);
         $steamPerProduct[] = floatval($row['steam_per_product']);
-        $line5SteamPerProduct[] = floatval($row['line5_steam_per_product']);
-        $line6SteamPerProduct[] = floatval($row['line6_steam_per_product']);
+        $CSDSteamPerProduct[] = floatval($row['CSD_steam_per_product']);
+        $FSSteamPerProduct[] = floatval($row['FS_steam_per_product']);
     }
 
     echo json_encode([
         'dates' => $dates,
-        'line5Hap' => $line5Hap,
-        'line5Chien' => $line5Chien,
-        'line6Hap' => $line6Hap,
-        'line6Chien' => $line6Chien,
+        'CSDhoi' => $CSDhoi,
+        'FShoi' => $FShoi,
         'steamPerProduct' => $steamPerProduct,
-        'line5SteamPerProduct' => $line5SteamPerProduct,
-        'line6SteamPerProduct' => $line6SteamPerProduct,
+        'CSDSteamPerProduct' => $CSDSteamPerProduct,
+        'FSSteamPerProduct' => $FSSteamPerProduct,
         'period' => $period
     ]);
 

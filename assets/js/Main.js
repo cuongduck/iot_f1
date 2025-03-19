@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(updateData, 60000); // Cập nhật mỗi phút
     
     // Xử lý sự kiện chuyển đổi period
-    setupPeriodButtons();
+    //setupPeriodButtons();
 });
 
 
