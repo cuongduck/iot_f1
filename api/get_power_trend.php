@@ -10,19 +10,20 @@ try {
     
     $query = "SELECT 
         Time,
-        COALESCE(F3_Thonggio_CS, 0) as thong_gio,
-        COALESCE(F3_VP, 0) as van_phong,
-        COALESCE(F3_MNK, 0) as mnk,
-        COALESCE(F3_AHU_Chiller, 0) as ahu_chiller,
-        COALESCE(F3_Kansui, 0) as kansui,
-        COALESCE(F3_Line_5, 0) as line5,
-        COALESCE(F3_Line_6, 0) as line6,
-        COALESCE(F3_Line_7, 0) as line7,
-        COALESCE(F3_Line_8, 0) as line8,
-        COALESCE(F3_Pho_1, 0) as pho1,
-        COALESCE(F3_Pho_2, 0) as pho2,
-        COALESCE(F3_Kho, 0) as kho
-    FROM So_dien_F3
+    COALESCE(CSD_RO, 0) as RO,
+    COALESCE(PET_BlowMoulder, 0) as PET_Blow,
+    COALESCE(PET_Chiller, 0) as PET_Chiller,
+    COALESCE(F1_DG_CSD, 0) as DG_CSD,
+    COALESCE(F1_MCC_CSD, 0) as MCC_CSD,
+    COALESCE(F1_MNK_PET, 0) as MNK_Pet,
+    COALESCE(F1_ChillerCSD, 0) as CSD_Chiller,
+    COALESCE(F1_DieuHoa_CSD, 0) as CSD_DH,
+    COALESCE(F1_MNK_75, 0) as MNK_75,
+    COALESCE(CSD_AHU, 0) as CSD_AHU,
+    COALESCE(F1_Kho, 0) as Kho,
+    COALESCE(F1_VP, 0) as VP,
+    COALESCE(F1_MDB2_1_1, 0) as total
+FROM CSD_So_Dien
     $dateRangeQuery
     ORDER BY Time ASC";
 
@@ -48,9 +49,9 @@ try {
 
     echo json_encode([
         'labels' => [
-            'Thong gio CS', 'Van phong', 'MNK', 'AHU Chiller', 
-            'Kansui', 'Line 5', 'Line 6', 'Line 7', 'Line 8',
-            'Pho 1', 'Pho 2', 'Kho'
+                       'RO', 'PET_Blow', 'PET_Chiller', 'DG_CSD', 
+            'VP', 'MCC_CSD', 'MNK_Pet', 'CSD_Chiller', 'CSD_DH',
+            'MNK_75', 'CSD_AHU', 'Kho'
         ],
         'datasets' => $data
     ]);

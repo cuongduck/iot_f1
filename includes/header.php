@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="assets/css/status-card.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="assets/css/speed_trend.css?v=<?php echo time(); ?>">
     <!-- Add Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Add Chart.js -->
@@ -16,6 +17,9 @@
      <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.1.0/chartjs-plugin-annotation.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.0/dist/chartjs-adapter-moment.min.js"></script>
 
     <!-- Các script khác -->
 </head>
@@ -59,13 +63,13 @@
         <div class="container-fluid">
             <div class="d-flex justify-content-between align-items-center">
                 <h2 class="factory-title mb-0"></h2>
-                <div class="date-filter d-flex gap-2">
-                    <button class="btn active" data-period="today">Hôm nay</button>
-                    <button class="btn" data-period="yesterday">Hôm qua</button>
-                    <button class="btn" data-period="week">Tuần này</button>
-                    <button class="btn" data-period="last_week">Tuần trước</button>
-                    <button class="btn" data-period="month">Tháng này</button>
-                </div>
+<div class="date-filter d-flex gap-2">
+    <button class="btn active" data-period="today">Hôm nay</button>
+    <button class="btn" data-period="yesterday">Hôm qua</button>
+    <button class="btn" data-period="week">Tuần này</button>
+    <button class="btn" data-period="last_week">Tuần trước</button>
+    <button class="btn" data-period="month">Tháng này</button>
+</div>
             </div>
         </div>
     </div>

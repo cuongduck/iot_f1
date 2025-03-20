@@ -1,6 +1,6 @@
 // Các giá trị target
 const TARGETS = {
-    OEE: 85,
+    OEE: 90,
     STEAM: 5.4,
     POWER: 300
 };

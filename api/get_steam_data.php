@@ -55,7 +55,7 @@ try {
                     (SUM(COALESCE(CSD_hoi, 0)) * 1000.0) / (SUM(COALESCE(CSD_SL_thuc_te, 0)) * 0.33)
                 ELSE 0
             END,
-        2) as CSD_steam_per_product,
+        3) as CSD_steam_per_product,
         ROUND(
             CASE 
                 WHEN SUM(COALESCE(FS_SL_thuc_te, 0)) > 0 THEN

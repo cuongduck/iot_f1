@@ -146,19 +146,83 @@
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
     <!-- OEE Chart -->
     <div class="card">
-        <h3 class="text-lg font-semibold mb-4">OEE giờ</h3>
+        <div class="chart-header" style="min-height: 10px;">
+            <h3 class="text-lg font-semibold mb-4">OEE Chart</h3>
+        </div>
         <div class="chart-container" style="height: 300px;">
             <canvas id="oeeChart"></canvas>
         </div>
     </div>
-    <!-- OEE by Line Chart -->
-    <div class="card">
-        <h3 class="text-lg font-semibold mb-4">OEE Theo ca</h3>
-        <div class="chart-container" style="height: 300px;">
-            <canvas id="oeeByLineChart"></canvas>
+    
+    <!-- Biểu đồ trend tốc độ dạng điện tim đồ -->
+    <div class="card ecg-container">
+        <div class="chart-header" style="min-height: 20px;">
+            <div class="flex justify-between items-center">
+                <h3 class="text-lg font-semibold">Biểu đồ trend tốc độ CSD</h3>
+   
+            </div>
+        </div>
+        
+        <!-- Nút điều khiển ECG -->
+        <div class="ecg-controls px-1">
+            <button onclick="goToStart()" class="ecg-control-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                    <line x1="5" y1="19" x2="5" y2="5"></line>
+                </svg>
+                Đầu
+            </button>
+            <button onclick="moveLeft()" class="ecg-control-btn primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                </svg>
+                Trước
+            </button>
+            <button id="autoScrollButton" onclick="toggleAutoScroll()" class="ecg-control-btn success">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                </svg>
+                Dừng cuộn
+            </button>
+            <button onclick="moveRight()" class="ecg-control-btn primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                </svg>
+                Sau
+            </button>
+            <button onclick="goToEnd()" class="ecg-control-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                    <line x1="19" y1="5" x2="19" y2="19"></line>
+                </svg>
+                Cuối
+            </button>
+        </div>
+        
+        <!-- Container biểu đồ với lớp papyrus -->
+        <div class="chart-container ecg-paper ecg-running position-relative" style="height: 300px;">
+            <!-- Hiệu ứng scanner -->
+            <div class="ecg-scanner"></div>
+            <canvas id="speedChart"></canvas>
+        </div>
+        
+        <!-- Phần thông tin phân trang -->
+        <div id="ecg-pagination" class="ecg-status">
+            <div class="ecg-status-indicator">
+                <div class="ecg-status-dot"></div>
+                <span>Đang cập nhật</span>
+            </div>
+            <span id="ecg-page-info">Đang tải dữ liệu...</span>
         </div>
     </div>
 </div>
+
+<!-- Các phần khác của trang -->
+
+<!-- Kết thúc Stutus line -->
+
+
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
     <!-- Steam Consumption Chart -->

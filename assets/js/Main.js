@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function updateData() {
     const activePeriod = document.querySelector('[data-period].active').dataset.period;
+    console.log('Active period:', activePeriod);
     updateAllCharts(activePeriod);
 }
-
 function toggleUserMenu() {
     document.getElementById('userMenu').classList.toggle('hidden');
 }

@@ -5,8 +5,8 @@ async function updateOEEChart(period) {
         const response = await fetch(`api/get_oee_data.php?period=${period}`);
         const data = await response.json();
         
-        // Tạo dữ liệu target line (89%)
-        const targetData = new Array(data.dates.length).fill(89);
+        // Tạo dữ liệu target line (90%)
+        const targetData = new Array(data.dates.length).fill(90);
 
         // Tính toán độ rộng của bar dựa trên period
         const getBarThickness = (period) => {
@@ -63,10 +63,10 @@ async function updateOEEChart(period) {
                         label: 'OEE (%)',
                         data: data.values,
                         backgroundColor: data.values.map(value => 
-                            value >= 89 ? 'rgba(54, 162, 235, 0.8)' : 'rgba(255, 68, 68, 0.8)'
+                            value >= 90 ? 'rgba(54, 162, 235, 0.8)' : 'rgba(255, 68, 68, 0.8)'
                         ),
                         borderColor: data.values.map(value => 
-                            value >= 89 ? 'rgb(54, 162, 235)' : 'rgb(255, 68, 68)'
+                            value >= 90 ? 'rgb(54, 162, 235)' : 'rgb(255, 68, 68)'
                         ),
                         borderWidth: 1,
                         barThickness: getBarThickness(period),
@@ -74,7 +74,7 @@ async function updateOEEChart(period) {
                         borderRadius: 4
                     },
                     {
-                        label: 'Target (89%)',
+                        label: 'Target (90%)',
                         data: targetData,
                         type: 'line',
                         borderColor: '#2196F3',
@@ -150,7 +150,7 @@ async function updateOEEChart(period) {
                                 const bodyLines = tooltip.body.map(b => b.lines);
                                 const dataIndex = tooltip.dataPoints[0].dataIndex;
                                 const value = data.values[dataIndex];
-                                const target = 89;
+                                const target = 90;
                                 const difference = (value - target).toFixed(1);
                                 const diffColor = difference >= 0 ? '#4CAF50' : '#F44336';
 
@@ -172,14 +172,14 @@ tableHTML = `
     <tr>
         <td style="padding: 8px;">
             <div style="margin: 2px 0; font-size: 12px;">
-                <span style="display: inline-block; width: 8px; height: 8px; background: ${value >= 89 ? '#36A2EB' : '#FF4444'}; border-radius: 50%; margin-right: 8px;"></span>
+                <span style="display: inline-block; width: 8px; height: 8px; background: ${value >= 90 ? '#36A2EB' : '#FF4444'}; border-radius: 50%; margin-right: 8px;"></span>
                 <span style="color: #666;">OEE:</span>
-                <span style="float: right; font-weight: 600; color: ${value >= 89 ? '#36A2EB' : '#FF4444'}">${value.toFixed(1)}%</span>
+                <span style="float: right; font-weight: 600; color: ${value >= 90 ? '#36A2EB' : '#FF4444'}">${value.toFixed(1)}%</span>
             </div>
             <div style="margin: 2px 0; font-size: 12px;">
                 <span style="display: inline-block; width: 8px; height: 8px; background: #2196F3; border-radius: 50%; margin-right: 8px;"></span>
                 <span style="color: #666;">Target:</span>
-                <span style="float: right; font-weight: 600; color: #2196F3">89.0%</span>
+                <span style="float: right; font-weight: 600; color: #2196F3">90.0%</span>
             </div>
             <div style="margin: 2px 0; font-size: 12px; border-top: 1px solid #eee; padding-top: 4px; margin-top: 4px;">
                 <span style="color: #666;">Difference:</span>
@@ -219,7 +219,7 @@ tableHTML = `
                         },
                         color: function(context) {
                             const value = context.dataset.data[context.dataIndex];
-                            return value >= 89 ? '#1976D2' : '#D32F2F';
+                            return value >= 90 ? '#1976D2' : '#D32F2F';
                         },
                         font: {
                             weight: 'bold',

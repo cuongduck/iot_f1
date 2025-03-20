@@ -2,7 +2,12 @@
 body {
     background-color: #f7f8fa;
 }
-
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
 /* Card Styles */
 .card {
     background-color: white;
@@ -417,4 +422,171 @@ body {
 
 .user-menu a {
     transition: all 0.2s;
+}
+/* Thêm vào file assets/css/style.css hoặc trong thẻ style ở header */
+
+/* Hiệu ứng giấy điện tim đồ */
+.ecg-container {
+    background-color: #fcfcfd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Hiệu ứng giấy grid */
+.ecg-paper {
+    background-color: #f8faff;
+    background-image: 
+        linear-gradient(rgba(99, 179, 237, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 179, 237, 0.1) 1px, transparent 1px),
+        linear-gradient(rgba(99, 179, 237, 0.05) 0.5px, transparent 0.5px),
+        linear-gradient(90deg, rgba(99, 179, 237, 0.05) 0.5px, transparent 0.5px);
+    background-size: 20px 20px, 20px 20px, 5px 5px, 5px 5px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+}
+
+/* Nút điều khiển ECG */
+.ecg-controls {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.ecg-control-btn {
+    background-color: #4a5568;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ecg-control-btn:hover {
+    filter: brightness(1.1);
+}
+
+.ecg-control-btn.primary {
+    background-color: #3182ce;
+}
+
+.ecg-control-btn.success {
+    background-color: #38a169;
+}
+
+.ecg-control-btn.danger {
+    background-color: #e53e3e;
+}
+
+/* Animation cho điểm mới */
+@keyframes newPoint {
+    0% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.5);
+        opacity: 0.8;
+    }
+    100% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.new-point {
+    animation: newPoint 0.5s ease-in-out;
+}
+
+/* Hiệu ứng điện tim đồ đang chạy */
+.ecg-running:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 60px;
+    background: linear-gradient(to right, rgba(248, 250, 255, 0), rgba(248, 250, 255, 0.9));
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Thanh trạng thái ECG */
+.ecg-status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    background-color: #edf2f7;
+    border-radius: 0 0 4px 4px;
+    font-size: 12px;
+    color: #4a5568;
+}
+
+.ecg-status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ecg-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #38a169;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(56, 161, 105, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 5px rgba(56, 161, 105, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(56, 161, 105, 0);
+    }
+}
+
+/* Hiệu ứng vạch trắng di chuyển */
+.ecg-scanner {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: 3;
+    pointer-events: none;
+    animation: ecgScan 1s linear infinite;
+}
+
+@keyframes ecgScan {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .ecg-controls {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+    
+    .ecg-control-btn {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
 }
