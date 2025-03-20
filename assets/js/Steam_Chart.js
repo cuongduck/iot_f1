@@ -16,18 +16,6 @@ async function updateSteamChart(period) {
                 labels: data.dates,
                 datasets: [
                     {
-                        label: 'Hơi F1',
-                        data: data.steamPerProduct,
-                        borderColor: '#9c27b0',
-                        backgroundColor: 'rgba(156, 39, 176, 0.1)',
-                        borderWidth: 2,
-                        pointRadius: 4,
-                        pointBackgroundColor: '#9c27b0',
-                        fill: true,
-                        tension: 0.4,
-                        order: 1
-                    },
-                    {
                         label: 'Hơi CSD',
                         data: data.CSDSteamPerProduct,
                         borderColor: 'rgb(54, 162, 235)',

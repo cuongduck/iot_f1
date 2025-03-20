@@ -132,7 +132,7 @@ function initSpeedChart() {
 
 // Hàm mới: Lấy tổng số bản ghi trước
 function fetchTotalRecords() {
-    fetch(`api/get_speed_trend.php?limit=1&offset=0&period=today`)
+    fetch(`api/get_speed_trend.php?limit=1&offset=0`)
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
@@ -168,7 +168,7 @@ function loadSpeedData(goToSpecificOffset) {
         indicator.classList.add('loading');
     }
     
-    fetch(`api/get_speed_trend.php?limit=${dataLimit}&offset=${currentOffset}&period=today`)
+    fetch(`api/get_speed_trend.php?limit=${dataLimit}&offset=${currentOffset}`)
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {

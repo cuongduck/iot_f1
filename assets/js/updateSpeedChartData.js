@@ -1,5 +1,5 @@
-// Định nghĩa hàm updateSpeedChartData để tránh lỗi trong charts.js
+// Hàm giả định để tương thích với charts.js
 function updateSpeedChartData(data) {
-    console.log('Speed chart data update called');
-    return Promise.resolve(); // Trả về một Promise đã resolved
+    // Không làm gì cả, chỉ đảm bảo trả về một promise đã resolved
+    return Promise.resolve();
 }

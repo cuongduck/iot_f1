@@ -9,19 +9,19 @@ let username = '';
 // Danh sách lỗi
 const errorTypes = [
  "",
-"Cài đặt/Chuyển đổi sản phẩm",
+"Cài đặt/Đổi SP",
 "CIP/Vệ sinh",
 "QA lấy mẫu",
 "CILT",
-"Bảo trì có kế hoạch",
+"Bảo trì có KH",
 "Dừng đi ăn",
-"Dừng máy có kế hoạch khác",
+"Dừng máy có KH khác",
 "Sự cố",
 "Dừng ngắn",
 "Giảm tốc độ",
-"Chờ NVL/Điện/Hơi/Nước/Bán thành phẩm…",
-"Lỗi dừng không xác định",
-"Dừng máy không có kế hoạch khác"
+"Chờ NVL…",
+"Lỗi không xác định",
+"Dừng máy không có KH khác"
 ];
 
 // Hàm format date
