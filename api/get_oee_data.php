@@ -74,10 +74,8 @@ SELECT
 
     $dates = [];
     $values = [];
-    $line5OEE = [];
-    $line6OEE = [];
-    $line7OEE = [];
-    $line8OEE = [];
+    $CSDOEE = [];
+
 
  while ($row = $result->fetch_assoc()) {
     $dates[] = $row['label'];

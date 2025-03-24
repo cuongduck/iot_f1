@@ -25,17 +25,6 @@ async function updateSteamChart(period) {
                         fill: true,
                         tension: 0.4,
                         order: 2
-                    },
-                    {
-                        label: 'Hơi FS',
-                        data: data.FSSteamPerProduct,
-                        borderColor: 'rgb(255, 99, 132)',
-                        backgroundColor: 'rgba(255, 99, 132, 0.1)',
-                        borderWidth: 2,
-                        pointRadius: 3,
-                        fill: true,
-                        tension: 0.4,
-                        order: 3
                     }
                 ]
             },

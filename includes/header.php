@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="assets/css/style.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="assets/css/status-card.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="assets/css/speed_trend.css?v=<?php echo time(); ?>">
+    <!-- Thêm đoạn này vào phần head, sau các reference CSS khác -->
+<link rel="stylesheet" href="assets/css/ir_chart.css?v=<?php echo time(); ?>"
     <!-- Add Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Add Chart.js -->

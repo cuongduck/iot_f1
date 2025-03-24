@@ -12,13 +12,13 @@ function editPlan(lineNumber) {
     document.getElementById('product_name').value = 
         product !== 'Chưa có kế hoạch' ? product : '';
     
-    // Lấy và cập nhật sản lượng
-    const quantityElement = document.getElementById(`quantity-${lineNumber}`);
-    const quantity = quantityElement.innerText
-        .replace(' Gói', '')
-        .replace(',', '');
-    document.getElementById('quantity').value = 
-        quantity !== '0' ? quantity : '';
+   // Lấy và cập nhật sản lượng
+const quantityElement = document.getElementById(`quantity-${lineNumber}`);
+const quantity = quantityElement.innerText
+    .replace(' Chai', '')
+    .replace(/,/g, ''); // Thay thế tất cả dấu phẩy
+document.getElementById('quantity').value = 
+    quantity !== '0' ? quantity : '';
     
     // Xử lý thời gian
     if (planDiv.dataset.startTime && planDiv.dataset.endTime) {

@@ -9,7 +9,9 @@
 <script src="assets/js/downtime_table.js?v=<?php echo time(); ?>"></script>
 <script src="assets/js/Power_Chart.js?v=<?php echo time(); ?>"></script>
 <script src="assets/js/Power_Line_Chart.js?v=<?php echo time(); ?>"></script>
-
+<!-- Thêm tham chiếu đến file JavaScript CO2 và BRIX Chart -->
+<script src="assets/js/co2_ir_chart.js?v=<?php echo time(); ?>"></script>
+<script src="assets/js/brix_ir_chart.js?v=<?php echo time(); ?>"></script>
 
 
 

@@ -51,7 +51,7 @@
             
             <!-- Co2 -->
             <div class="bg-white p-2 rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300">
-                <div class="text-sm text-gray-600 mb-2">Co2</div>
+                <div class="text-sm text-gray-600 mb-2">CO2</div>
                 <div class="flex items-center">
                     <svg class="w-6 h-6 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
@@ -305,7 +305,46 @@
             </div>
         </div>
     </div>
+ </div>   
+<!-- Biểu đồ CO2 và BRIX dạng IR -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+    <!-- CO2 Chart -->
+    <div class="card ir-card">
+        <div class="chart-header">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-semibold">Biểu đồ nồng độ CO2</h3>
+		
+                <div class="text-sm text-gray-500"> Giới hạn: 6.6 - 7.4 g/l</div>
+            </div>
+        </div>
+        <div class="chart-container ir-chart relative" style="height: 300px;">
+            <!-- Hiệu ứng quét IR -->
+            <div class="ir-effect"></div>
+            <!-- Hiệu ứng shimmer -->
+            <div class="shimmer-effect"></div>
+            <canvas id="co2Chart"></canvas>
+        </div>
+    </div>
+    
+    <!-- BRIX Chart -->
+    <div class="card ir-card">
+        <div class="chart-header">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-semibold">Biểu đồ nồng độ BRIX</h3>
+		</>
+                <div class="text-sm text-gray-500"> Giới hạn: 16.5 - 16.9 °</div>
+            </div>
+        </div>
+        <div class="chart-container ir-chart relative" style="height: 300px;">
+            <!-- Hiệu ứng quét IR -->
+            <div class="ir-effect"></div>
+            <!-- Hiệu ứng shimmer -->
+            <div class="shimmer-effect"></div>
+            <canvas id="brixChart"></canvas>
+        </div>
+    </div>
 </div>
+
 
 <!-- Power Usage Table -->
 
@@ -320,3 +359,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initSteamUsageChart();
 });
 </script>
+<?php
+include 'includes/footer.php';
+?>

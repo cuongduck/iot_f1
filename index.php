@@ -36,5 +36,5 @@ switch($page) {
         break;
 }
 
-include 'includes/footer.php';
+
 ?>
