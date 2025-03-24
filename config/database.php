@@ -1,8 +1,8 @@
 <?php
 define('DB_HOST', 'localhost');
-define('DB_USER', 'pnlekoychosting_mb');
-define('DB_PASS', 'Masan@2025');
-define('DB_NAME', 'pnlekoychosting_fs');
+define('DB_USER', 'pnlekoycd');
+define('DB_PASS', 'Mad');
+define('DB_NAME', 'pnlekod');
 
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
